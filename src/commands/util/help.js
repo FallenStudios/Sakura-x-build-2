@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
         if(bot.commands.has(command)) {
             command = bot.commands.get(command);
             var SHembed = new MessageEmbed()
-            .setColor(colours.cyan)
+            .setColor("#63798")
             .setAuthor(`Sakura X`, message.guild.iconURL)
             .setThumbnail(bot.user.displayAvatarURL)
             .setDescription(`The bot prefix is: ${prefix}\n\n**Command:** ${command.name}\n**Description:** ${command.description || "No Description"}\n**Usage:** ${command.usage || "No Usage"}\n**Aliases:** ${command.aliases}`)
@@ -22,7 +22,7 @@ module.exports.run = async (bot, message, args) => {
         message.delete();
         let embed = new MessageEmbed()
         .setAuthor(`Help Command!`, message.guild.iconURL)
-        .setColor(colours.redlight)
+        .setColor("#63798")
         .setDescription(`${message.author.username} check your dms!`)
 
         let Sembed = new MessageEmbed()
