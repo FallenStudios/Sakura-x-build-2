@@ -4,7 +4,9 @@ const NumberSuffix = require(`number-suffix`);
 const numberSuffix = new NumberSuffix({ precision: 2 });
 
 module.exports = {
-    aliases: [],
+    name: "Nowplaying",
+    usage: "/nowplaying",
+    aliases: ["np"],
     description: "\`Show now playing song\`",
     run: async(client, message, args) => {
         const queue = message.client.queue.get(message.guild.id);

@@ -15,7 +15,7 @@ module.exports = {
 
         if (!args.length)
             return message
-                .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
+                .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name>`)
                 .catch(console.error);
 
         const permissions = channel.permissionsFor(message.client.user);
@@ -124,6 +124,8 @@ module.exports = {
             return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
         }
     },
+    name: "Play",
+    usage: "/play <YouTube URL | Video Name>",
     aliases: ["p"],
     description: "\`Plays audio from YouTube or (Soundcloud Coming Soon)\`"
 }

@@ -11,6 +11,8 @@ module.exports = {
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error);
   },
+  name: "Skip",
+  usage: "/skip",
   aliases: ["s"],
   description: "\`Skip the currently playing song\`",
 };

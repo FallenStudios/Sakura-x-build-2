@@ -8,6 +8,8 @@ function clean(text) {
 }
 
 module.exports = {
+    name: "Eval",
+    usage: "/Eval [Input]",
     aliases: [],
     description: "\`Evaluate the bot (Owner of bot Only\`",
     run: async(client, message, args) => {

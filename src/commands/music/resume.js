@@ -15,6 +15,8 @@ module.exports = {
     message.delete({ timeout: 5 }).catch(console.error);
     return message.reply("The queue is not paused.").catch(console.error);
   },
+  name: "Resume",
+  usage: "/resume ",
   aliases: ["r"],
   description: "\`Resume currently playing music\`",
 };

@@ -1,6 +1,9 @@
 const {MessageEmbed} = require(`discord.js`);
+const { uptime } = require("process");
 
 module.exports = {
+    name: "Uptime",
+    usage: "/uptime",
     aliases: ["ping"],
     description: "\`Shows how long the bot has been running and its latency\`",
     run: async(client, message, args) => {

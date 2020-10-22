@@ -41,6 +41,8 @@ module.exports = {
       message.channel.activeCollector = false;
     }
   },
+  name: "Search",
+  usage: "/search <Video Name>",
   aliases: [],
   description: "\`Search and select videos to play\`",
 };

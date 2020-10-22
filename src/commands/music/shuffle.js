@@ -15,6 +15,8 @@ module.exports = {
     message.client.queue.set(message.guild.id, queue);
     queue.textChannel.send(`${message.author} 🔀 shuffled the queue`).catch(console.error);
   },
+  name: "Shuffle",
+  usage: "/shuffle",
   aliases: [],
   description: "\`Shuffle queue\`",
 };

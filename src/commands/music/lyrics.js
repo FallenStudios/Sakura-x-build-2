@@ -29,6 +29,8 @@ module.exports = {
     message.delete({ timeout: 5 }).catch(console.error);
     return message.channel.send(lyricsEmbed).catch(console.error);
   },
+  name: "Lyrics",
+  usage: "/lyrics",
   aliases: ["ly"],
   description: "\`Get lyrics for the currently playing song\`",
 };

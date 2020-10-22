@@ -14,6 +14,8 @@ module.exports = {
       return queue.textChannel.send(`${message.author} ⏸ paused the music.`).catch(console.error);
     }
   },
+  name: "Pause",
+  usage: "/pause",
   aliases: [],
   description: "\`Pause the currently playing music\`",
 };

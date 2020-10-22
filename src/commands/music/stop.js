@@ -12,6 +12,8 @@ module.exports = {
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏹ stopped the music!`).catch(console.error);
   },
-  aliases: [],
+  name: "Stop",
+  usage: "/stop",
+  aliases: ["terminate"],
   description: "\`Stops the music\`",
 };

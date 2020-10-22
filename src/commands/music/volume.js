@@ -18,6 +18,8 @@ module.exports = {
 
     return queue.textChannel.send(`Volume set to: **${args[0]}%**`).catch(console.error);
   },
+  name: "Volume",
+  usage: "/volume < 0 - 100 >",
   aliases: ["v"],
   description: "\`Change volume of currently playing music\`",
 };

@@ -30,6 +30,8 @@ module.exports = {
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
   },
+  name: "Skipto",
+  usage: "/skipto <Queue Number>",
   aliases: ["st"],
   description: "\`Skip to the selected queue number\`",
 };

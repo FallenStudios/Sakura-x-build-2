@@ -24,6 +24,8 @@ module.exports = {
       message.channel.send(queueEmbed);
     });
   },
+  name: "Queue",
+  usage: "/queue",
   aliases: ["q"],
   description: "\`Show the music queue and now playing.\`",
 };
