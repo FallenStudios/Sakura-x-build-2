@@ -2,7 +2,6 @@ const { MessageEmbed } = require('discord.js');
 const prefix = "/"
 
 module.exports.run = async (client, message, args) => {
-
         let embed = new MessageEmbed()
         .setAuthor(`Help Command!`, message.guild.iconURL)
         .setColor("#63798")
