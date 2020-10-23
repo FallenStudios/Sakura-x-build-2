@@ -1,10 +1,11 @@
-const mongoose = require('mongoose');
+const { model } = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
-    _id: String,
-    commands: [],
-    prefix: {type: String, default: "s-"},
-    autoroles: [],
-})
+class GeneralModule {
+  prefix = '.';
+  blacklistedChannelIds = [];
+}
 
-module.exports = mongoose.model("Guild", UserSchema);
+module.exports = model('guild', {
+  _id: String,
+  general: { type: Object, default: new GeneralModule() }
+});
