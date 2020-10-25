@@ -1,10 +1,11 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const  NumberSuffix = require(`number-suffix`);
 const numberSuffix = new NumberSuffix({precision: 2});
-const { MessageEmbed } = require(`discord.js`);
+const { MessageAttachment } = require(`discord.js`);
 const scdl = require("soundcloud-downloader");
 const { canModifyQueue } = require("../utils/queue");
 const play = require("../commands/music/play");
+const canvacord = require('canvacord')
 
 
 module.exports = {
@@ -75,15 +76,24 @@ module.exports = {
       });
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
-    let PlayEmbed = new MessageEmbed()
-      .setTitle(`🎶 Started playing`)
-      .addField(`***${song.author}***`, `${song.title}`, true)
-      .setURL(song.url)
-      .setImage(song.thumbnail)
-      .setFooter(`👁️ Views: ${numberSuffix.format(song.viewcount)}, 👍 Likes: ${numberSuffix.format(song.likes)}, 👎 Dislikes: ${numberSuffix.format(song.dislikes)}`)
+    const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
+    const left = song.duration - seek;
+
+    
+
+    let buildCard = new canvacord.Spotify()
+    .setTitle("Started Playing")
+    .setStartTimestamp(Date.now() - seek * 1000)
+    .setEndTimestamp(Date.now() + song.duration * 1000)
+    .setAlbum(song.title)
+    .setAuthor(song.author)
+    .setImage(song.thumbnail)
+
+    const PlayCard = await buildCard.build();
+      
 
     try {
-      var playingMessage = await queue.textChannel.send(PlayEmbed);
+      var playingMessage = await queue.textChannel.send(new MessageAttachment(PlayCard, "music.png"));
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔇");

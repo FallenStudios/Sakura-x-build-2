@@ -12,8 +12,13 @@ module.exports = {
       .send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`)
       .catch(console.error);
   },
-  name: "Loop",
-  usage: "/loop",
   aliases: ['l'],
   description: "\`Toggle music loop\`",
 };
+
+module.exports.help = {
+  name: "Loop",
+  usage: "loop",
+  description: "Toggles music loop",
+  category: "Music"
+}

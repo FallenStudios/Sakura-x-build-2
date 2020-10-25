@@ -1,10 +1,16 @@
-const mongoose = require('mongoose');
+const { Rank } = require('canvacord');
+const { model, Schema} = require('mongoose');
 
-const UserSchema = new mongoose.Schema({
+class RankCard {
+    ImageURL = "";
+    XpBarColor = "";
+}
+
+const userSchema = new Schema({
     _id: String,
-    wallet: {type: Number, default: 0},
+    level: {type: Number, default: 1},
     xp: {type: Number, default: 0},
-    level: {type: Number, default: 1}
+    xpcard: {type: Object, default: new RankCard()}
 })
 
-module.exports = mongoose.model("User", UserSchema);
+module.exports = model('user', userSchema)

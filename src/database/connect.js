@@ -5,6 +5,7 @@ async function connect(){
         useNewUrlParser: true,
         useUnifiedTopology: true,
     });
+    console.log('Connected to database client')
 }
 
 module.exports = connect()

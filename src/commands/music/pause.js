@@ -19,3 +19,11 @@ module.exports = {
   aliases: [],
   description: "\`Pause the currently playing music\`",
 };
+
+module.exports.help = {
+  name: "Pause",
+  usage: "pause",
+  description: "Pause the currently playing music",
+  category: "Music"
+}
+

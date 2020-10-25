@@ -34,3 +34,11 @@ module.exports = {
   aliases: ["ly"],
   description: "\`Get lyrics for the currently playing song\`",
 };
+
+module.exports.help = {
+  name: "Lyrics",
+  usage: "lyrics",
+  description: "Get lyrics for the currently playing song",
+  category: "Music"
+}
+

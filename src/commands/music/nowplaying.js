@@ -1,11 +1,10 @@
 const createBar = require("string-progressbar");
-const { MessageEmbed } = require("discord.js");
+const { MessageAttachment } = require("discord.js");
+const canvacord = require('canvacord');
 const NumberSuffix = require(`number-suffix`);
 const numberSuffix = new NumberSuffix({ precision: 2 });
 
 module.exports = {
-    name: "Nowplaying",
-    usage: "/nowplaying",
     aliases: ["np"],
     description: "\`Show now playing song\`",
     run: async(client, message, args) => {
@@ -15,25 +14,26 @@ module.exports = {
         const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
         const left = song.duration - seek;
 
-        let nowPlaying = new MessageEmbed()
+        let nowPlaying = new canvacord.Spotify()
             .setTitle("Now playing")
-            .addField(`***${song.author}***`, `${song.title}`, true)
-            .setURL(song.url)
+            .setStartTimestamp(Date.now() - seek * 1000)
+            .setEndTimestamp(Date.now() + song.duration * 1000)
+            .setAlbum(song.title)
+            .setAuthor(song.author)
             .setImage(song.thumbnail)
-            .setColor("#F8AA2A")
-            .setAuthor("Sakura X")
-            .addField(
-                "\u200b",
-                new Date(seek * 1000).toISOString().substr(11, 8) +
-                " [" +
-                createBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
-                "] " +
-                (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
-                false
-            );
+
+            const PlayCard = await nowPlaying.build();
+            
 
         if (song.duration > 0)
-            nowPlaying.setFooter("Time Remaining: " + new Date(left * 1000).toISOString().substr(11, 8));
-        return message.channel.send(nowPlaying);
+
+        return message.channel.send(new MessageAttachment(PlayCard, "music.png"));
     }
 };
+
+module.exports.help = {
+    name: "Nowplaying",
+    usage: "nowplaying",
+    description: "Show now playing song",
+    category: "Music"
+  }
