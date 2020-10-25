@@ -8,6 +8,7 @@ module.exports = {
         if(!userData) await client.models.user.create({_id: message.author.id})
 
         let curxp = userData.xp;
+        
         let curlvl = userData.level;
         let nxtLvl = userData.level * 300;
         userData.xp = curxp + xpAdd;
