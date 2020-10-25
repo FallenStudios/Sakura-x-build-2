@@ -15,11 +15,11 @@ module.exports = async (client, message) => {
 
     guildData.save()
 
-    let PREFIX = "s/"
+    let PREFIX = "s-"
 
     if(!message.content.startsWith(PREFIX)) return;
-    let cmdName = message.content.substring(message.content.indexOf(PREFIX)+1).split(new RegExp(/\s+/)).shift();
-    let argsToParse = message.content.substring(message.content.indexOf(' ')+1);
+    let cmdName = message.content.substring(message.content.indexOf(PREFIX)+2).split(new RegExp(/\s+/)).shift();
+    let argsToParse = message.content.substring(message.content.indexOf(' ')+2);
     if(client.commands.get(cmdName))
         client.commands.get(cmdName)(client, message, argsToParse);
     else
