@@ -18,8 +18,8 @@ module.exports = async (client, message) => {
     let PREFIX = "s/"
 
     if(!message.content.startsWith(PREFIX)) return;
-    let cmdName = message.content.substring(message.content.indexOf(PREFIX)+1).split(new RegExp(/\s+/)).shift();
-    let argsToParse = message.content.substring(message.content.indexOf(' ')+1);
+    let cmdName = message.content.substring(message.content.indexOf(PREFIX)+PREFIX.length()).split(new RegExp(/\s+/)).shift();
+    let argsToParse = message.content.substring(message.content.indexOf(' ')+PREFIX.length());
     if(client.commands.get(cmdName))
         client.commands.get(cmdName)(client, message, argsToParse);
     else
